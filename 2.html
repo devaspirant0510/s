@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border:2px solid red;
+
+        }
+        a{
+            border: 2px solid black;
+        }
+        #tt{
+            display: block;
+            width: 300px;
+            border: 3px solid gray;
+        }
+        .ti{
+            display: inline-block;
+        }
+        a{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="ti">
+        github
+    </div>
+    <a href="http://www.github.com/devaspirant0510">
+        내 깃허브
+    </a>
+    <span id="tt">
+        w3schools
+    </span>
+    <!--
+    display 가 inline or inline-block 인 경우 코드상에서 줄바꿈도 적용됨 
+    -->
+    <ul id="t1ul">
+        <li id="t1li">도란</li>
+        <li id="t1li">오너</li><li id="t1li">페이커</li><li id="t1li">구마유시</li><li id="t1li">캐리아</li>
+    </ul>
+    <ul style="display: inline;">
+        <li>기인</li>
+        <li>캐년</li><li>쵸비</li>
+    </ul>
+    <style>
+        li{
+            display: inline;
+        }
+        #t1ul{
+            
+            border: 2px solid gold;
+            padding:0;
+            text-align: center;
+            display: flex;
+        }
+        #t1li{
+            border: 2px solid black;
+            display:inline;
+            list-style-type: none;
+            padding: 0px 10px;
+            margin: 5px 10px;
+
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!-- ㅗhtml 문서는 head 와 body 로 구성됨 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    hello lsh
+    <!-- tag는 태그명과 속성=값 으로 이루어져있다 -->
+    <!--
+div 태그는 네모 박스이다
+네모박스는 너비 높이로 구성되어있다  
+테두리 모양 굵기 색깔을 가지고있다
+배경은 모양 색깔을 가지고 있다
+내용물은 색깔 능기 크기를 가지고있다
+내용물은 좌우정렬 위아래 세로 정렬 으로 구성
+    -->
+<!-- 속성중에 id 는 단일 태그로 중복 불가 하다 #으로 접근가능
+ class 는 중복사용가능 . 으로 구분 가능
+    -->
+    <div id="title" class="title" style="color: aquamarine; border: 2px solid red; margin: 10px; padding :10px;">
+        html 늅늅이
+    </div>
+    <div>
+        구마유시
+    </div>
+    <div id="content" class="content">
+        쵸단
+    </div>
+    <style>
+        .content{
+            width: 300px;
+            height: 200px;
+            border: 5px solid green;
+            background-color: yellow;
+            color: red;
+            font-size: 20px;
+            text-align: center;
+            line-height: 300px;
+        }
+
+    </style>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%;
+        }
+        body{
+            margin:0;
+            padding: 0;
+            text-align: center;
+        }
+        header,nav,main,footer{
+            margin : 0 auto;
+        }
+        #container{
+            /* display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column; */
+            height: 100%;
+            width: 100%;
+            background-color: gainsboro;
+            position: absolute;
+        }
+        #container > header{
+            
+            width: 800px;
+            height: 100px;
+            background-color: green;
+            text-align: center;
+            color: white;
+            line-height: 100px;
+            font-size: 20px;
+        }
+        #container > nav{
+            width: 800px;
+            height: 100px;
+            background-color: rgb(99, 99, 48);
+            text-align: center;
+            color: white;
+            line-height: 100px;
+            font-size: 20px;
+        }
+        #container > main{
+            width: 800px;
+            height: 300px;
+            background-color: green;
+            text-align: center;
+            color: white;
+            line-height: 300px;
+            font-size: 20px;
+        }
+        #container > footer{
+            width: 800px;
+            height: 100px;
+            background-color: rgb(99, 99, 48);
+            text-align: center;
+            color: white;
+            line-height: 100px;
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="container">
+        <header>header</header>
+        <nav>nav</nav>
+        <main>main</main>
+        <footer>footer</footer>
+    </div>
+    
+</body>
+</html>
