@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            display: flex;
+            align-items: center;
+        }
+        .newscom{
+            width: 100px;
+            height: 70px;
+            border: 1px solid gray;
+            text-align: center;
+            align-content: center;
+        }
+        .newscom:hover{
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="newscom">서울신문</div>
+    </div>
+    <script>
+        let data = ["서울신문","동해신문","동아신문","제일신문","신문물","울트라신문"]
+        const box = document.getElementsByClassName("newscom");
+        const b = document.querySelector(".box")
+        console.log();
+        
+        for(let i=0; i<data.length; i++){
+        let content = `<div class='newscom'><div>${data[i]}</div></div>`;
+        b.innerHTML+=content;
+        
+
+        }
+        for(let i=0; i<data.length; i++){
+        
+
+        box[i].addEventListener("mouseover",(e)=>{
+            console.log(e);
+            console.log(e.target)
+            console.log(e.target.textContent)
+            const atag = document.createElement("a");
+            atag.href="https://www.naver.com"
+            e.target.innerHTML = "구독|기사보기"
+            
+        })
+        box[i].addEventListener("mouseout",(e)=>{
+            console.log(e.target.textContent)
+            e.target.innerHTML = `<div>${data[i]}</div>`
+        })
+        }
+        console.log(box.innerHTML);
+        
+        console.log(box.innerHTML);
+
+        console.log(box)
+
+    </script>
+    
+</body>
+</html>

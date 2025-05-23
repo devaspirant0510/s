@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <fieldset>
+        <legend>전화번호부 입력 폼</legend>
+        <form action="">
+        <div>
+            <label for="name"> 이름 </label>
+            <input type="text" name="name" id="name" placeholder="이름을 입력하세요" required/>
+        </div>
+        <div>
+            <label for="ph"> 전화번호 </label>
+            <input type="text" name="phone" id="phone" placeholder="전번을 입력하세요" required/>
+        </div>
+        <div>
+            <label for="email"> 이메일 </label>
+            <input type="email" name="email" id="email" placeholder="이멜을 입력하세요" required/>
+        </div>
+        <input type="submit" value="전화번호부 입력">
+        </form>
+    </fieldset>
+    <fieldset>
+        <legend>로그인폼</legend>
+        <form action="login_proc.html" method="post">
+        <input type="text" name="id" placeholder="아이디"/>
+        <input type="password" name="password" placeholder="비번"/>
+        <input type="submit" value="로긴">
+        </form>
+    </fieldset>
+    <fieldset>
+        <legend>etc 폼 </legend>
+        <p>세체원은? </p>
+        <input type="radio" name="ad" value="1"> 1.구마유시<br>
+        <input type="radio" name="ad" value="2"> 2.데프트<br>
+        <input type="radio" name="ad" value="3"> 3.바이퍼<br>
+        <input type="radio" name="ad" value="4"> 4.프레이<br>
+        <input type="radio" name="ad" value="4"> 5.뱅<br>
+    </fieldset>
+    <fieldset>
+        <legend>T1 교체되야된다 생각하는 멤버</legend>
+        <input type="checkbox" name="t1" value="1">1. 도란<br>
+        <input type="checkbox" name="t1" value="1">2. 오너<br>
+        <input type="checkbox" name="t1" value="1">3. 페이커<br>
+        <input type="checkbox" name="t1" value="1">4. 구마유시<br>
+        <input type="checkbox" name="t1" value="1">5. 캐리아<br>
+    </fieldset>
+    <fieldset>
+        <legend>월즈 우승할것같은팀</legend>
+        <select>
+            <option>T1</option>
+            <option>한화</option>
+            <option>징동</option>
+            <option>젠지</option>
+        </select>
+    </fieldset>
+    <fieldset>
+    <legend>기타 input</legend>
+    <div>
+        <label>text: </label>
+        <input type="text" placeholder="텍스트 입력">
+    </div>
+    <div>
+        <label>password: </label>
+        <input type="password" placeholder="비밀번호">
+    </div>
+    <div>
+        <label>number: </label>
+        <input type="number" placeholder="숫자">
+    </div>
+    <div>
+        <label>email: </label>
+        <input type="email" placeholder="이메일">
+    </div>
+    <div>
+        <label>url: </label>
+        <input type="url" placeholder="URL">
+    </div>
+    <div>
+        <label>tel: </label>
+        <input type="tel" placeholder="전화번호">
+    </div>
+    <div>
+        <label>date: </label>
+        <input type="date">
+    </div>
+    <div>
+        <label>time: </label>
+        <input type="time">
+    </div>
+    <div>
+        <label>datetime-local: </label>
+        <input type="datetime-local">
+    </div>
+    <div>
+        <label>month: </label>
+        <input type="month">
+    </div>
+    <div>
+        <label>week: </label>
+        <input type="week">
+    </div>
+    <div>
+        <label>color: </label>
+        <input type="color">
+    </div>
+    <div>
+        <label>range: </label>
+        <input type="range" min="0" max="100">
+    </div>
+    <div>
+        <label>file: </label>
+        <input type="file">
+    </div>
+    <div>
+        <label>checkbox: </label>
+        <input type="checkbox">
+    </div>
+    <div>
+        <label>radio: </label>
+        <input type="radio" name="example">
+    </div>
+    <div>
+        <label>hidden (보이지 않음): </label>
+        <input type="hidden" value="숨겨짐">
+    </div>
+    <div>
+        <label>submit: </label>
+        <input type="submit" value="제출">
+    </div>
+    <div>
+        <label>reset: </label>
+        <input type="reset" value="리셋">
+    </div>
+    <div>
+        <label>button: </label>
+        <input type="button" value="버튼">
+    </div>
+</fieldset>
+
+</body>
+</html>

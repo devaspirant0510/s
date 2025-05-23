@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #login-form{
+            border: 1px solid black;
+            width: 500px;
+            height: 750px;
+            border-radius: 20px;
+            padding: 30px;
+        }
+        .login-input{
+            width: 100%;
+            border-radius: 0;
+            font-size: 15px;
+            padding: 20px 0 ;
+            border: none;
+             box-sizing: border-box;
+            padding-left: 15px;
+        }
+        .login-input:first-child{
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-left: 0.5px solid #a0a0a0;
+            border-top: 0.5px solid #a0a0a0;
+            border-right: 0.5px solid #a0a0a0;
+        }
+        .login-input:last-child{
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border: 0.5px solid #a0a0a0;
+        }
+
+        #app{
+            display: flex;
+            justify-content: center;
+        }
+        #login-form-footer{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        #login-button{
+            width: 100%;
+            padding: 10px;
+            background-color: rgb(162, 162, 162);
+            border-radius: 10px;
+            border: none;
+            color: white;
+            font-size: 20px;
+            margin-top: 8px;
+        }
+
+         input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        position: relative;
+    }
+
+    input[type="checkbox"]:checked {
+        background-color: #55ff45;
+        color: white;
+    }
+    </style>
+
+</head>
+<body>
+    <div id="app">
+    <div id="login-form">
+        <div>
+        <input placeholder="아이디 또는 전화번호" class="login-input"/>
+        <input placeholder="비밀번호" type="password" class="login-input"/>
+        </div>
+        <div id="login-form-footer">
+            <div id="login-form-footer-status">
+                <input type="checkbox">
+                <span>로그인 상태 유지</span>
+            </div>
+            <div>
+                <span>ip보안</span>
+            </div>
+        </div>
+        <button id="login-button" class="checkbox">
+            로그인
+        </button>
+
+    </div>
+    </div>
+    <script>
+        const lf = document.getElementById("login-form");
+        const b = document.getElementById("login-button");
+        b.addEventListener("click", () => {
+    let i = 0;
+    const rotate = () => {
+        lf.style.transform = `rotateY(${i}deg)`;
+        i++;
+        if (i <= 360) {
+            requestAnimationFrame(rotate);
+        }
+    };
+    rotate();
+});
+
+
+    </script>
+
+    
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/babel">
+    const App = ()=>{
+        const [count,setCount] = React.useState(0);
+        const onClickPlus = ()=>{
+            setCount(prev=>prev+1)
+        }
+        const onClickMinus = ()=>{
+            setCount(prev=>prev-1)
+        }
+        return (
+            <>
+                <div>
+                    <button onClick={onClickMinus}>
+                        -
+                    </button>
+                    {count}
+                    <button onClick={onClickPlus}>
+                        +
+                    </button>
+                </div>
+                </>
+        )
+
+    }
+    const container = document.getElementById('app');
+    const root = ReactDOM.createRoot(container);
+    root.render(<App/>)
+
+</script>
+
+</body>
+</html>

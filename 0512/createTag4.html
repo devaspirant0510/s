@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="root"></div>
+    <button id="btn-block" onclick="onClickBlock()"> block 으로 만들엇 </button>
+    <button id="btn-flex" onclick="onClickFlex()"> flex 로 만들엇 </button>
+    <script>
+        const root = document.getElementById("root");
+        root.style.display ="flex"
+        root.style.flexWrap ="wrap"
+        function onClickBlock(){
+            root.style.display="block"
+        }
+        function onClickFlex(){
+
+            root.style.display="flex"
+        }
+
+        for(let i=0; i<10; i++){
+            let div = document.createElement("div");
+            div.style.width="130px";
+            div.style.height="130px";
+            div.style.border ="1px solid bolder";
+            div.style.margin = "3px 3px"
+            div.style.backgroundColor="red"
+            div.textContent = i;
+            root.appendChild(div);
+        }
+        </script>
+</body>
+
+                
+</body>

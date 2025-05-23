@@ -1,0 +1,22 @@
+ [
+    {
+      "title": "자바 정석",
+      "author": "최도란",
+      "price": 7000
+    },
+    {
+      "title": "C++ 기초",
+      "author": "문현준",
+      "price": 40000
+    },
+    {
+      "title": "HTML 기초",
+      "author": "말랑이",
+      "price": 50000
+    },
+    {
+      "title": "자바스크립트 기초",
+      "author": "이민형",
+      "price": 30000
+    }
+  ]

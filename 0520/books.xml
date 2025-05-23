@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+    <book>
+        <title>탑의 정석</title>
+        <author>최도란</author>
+        <price>7,000</price>
+    </book>
+    <book>
+        <title>정글의 기초</title>
+        <author>문현준</author>
+        <price>40,000</price>
+    </book>
+    <book>
+        <title>미드의 기초</title>
+        <author>말랑이</author>
+        <price>50,000</price>
+    </book>
+    <book>
+        <title>원딜의 기초</title>
+        <author>이민형</author>
+        <price>30,000</price>
+    </book>
+</books>

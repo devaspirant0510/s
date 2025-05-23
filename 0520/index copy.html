@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>책찾기</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="search">
+      <div>책찾기</div>
+      <input id="input"  placeholder="검색어를 입력해주세요"/>
+      <button id="btn">찾기</button>
+    </div>
+    <div id="content"></div>
+    <script>
+      const input = document.querySelector("#input");
+      const button = document.querySelector("#btn");
+      console.log(button);
+      console.log(input.value);
+
+      const content = document.querySelector("#content");
+      button.addEventListener("click", () => {
+        console.log("click");
+        console.log(input.value);
+
+        if (!input.value) {
+          alert("검색어를 입력해주세요");
+          return;
+        }
+        const xHttp = new XMLHttpRequest();
+        xHttp.open("get", "books.json");
+        xHttp.send();
+        xHttp.onreadystatechange = () => {
+          if (xHttp.readyState === 4 && xHttp.status === 200) {
+            try {
+              const result = JSON.parse(xHttp.responseText);
+              console.log(result);
+
+              const findResult = result.find((element) =>
+                element.title.includes(input.value)
+              );
+              if (!findResult) {
+                alert("찾으시는 값이 없습니다. ");
+                return;
+              }
+              const title = document.createElement("li");
+              title.textContent = `제목 : ${findResult.title}`;
+              const author = document.createElement("li");
+              author.textContent = `작가 : ${findResult.author}`;
+              const price = document.createElement("li");
+              price.textContent = `가격 : ${findResult.price}원`;
+              content.appendChild(title);
+              content.appendChild(author);
+              content.appendChild(price);
+            } catch (e) {
+              alert("예기치 못한 오류 발생");
+            }
+          }
+        };
+      });
+      function onClickButton() {}
+    </script>
+  </body>
+</html>

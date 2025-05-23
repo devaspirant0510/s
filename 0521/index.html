@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style>
+        #wrapper{
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            justify-content: center;
+            align-items: center;
+
+        }
+        @media screen and (max-width:600px){
+            #wrapper{
+                width: 100%;
+            }
+            body{
+                margin: 4px;
+            }
+
+
+            
+        }
+        #movie-rank-wrapper {
+            border-radius: 15px;
+            border: #2e7d32 2px solid;
+
+            width: 100%;
+        }
+
+        #button {
+            padding: 0;
+            margin: 0;
+            border-radius: 50%;
+            border: none;
+            width: 30px;
+            height: 30px;
+        }
+
+        #movie-rank {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 12px;
+            border-radius: 20px;
+        }
+
+        .movie-item {
+            border-bottom: 1px solid #ababab;
+            padding: 8px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .movie-item > :nth-child(2) {
+            font-size: 18px;
+        }
+
+        .movie-item > :nth-child(3) {
+            font-size: 20px;
+        }
+
+        .movie-item-rank {
+            display: flex;
+            align-items: center;
+            width: 50px;
+            justify-content: center;
+        }
+
+        .rank-item-none {
+            color: grey;
+        }
+
+        .rank-item-plus {
+            color: red;
+        }
+
+        .rank-item-minus {
+            color: blue;
+        }
+
+        #title {
+            background: #2e7d32;
+            color: white;
+            text-align: center;
+            font-size: 18px;
+            width: 100%;
+            padding: 15px 0 ;
+        }
+
+        #form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 15px 0;
+            gap: 10px;
+        }
+
+        #form select {
+            font-size: 15px;
+        }
+
+        #movie-info {
+            margin-top: 15px;
+            border-radius: 20px;
+            border: 1px solid #2e7d32;
+            padding: 15px 0 ;
+            width: 100%;
+        }
+
+        #movie-info div {
+            font-size: 15px;
+            margin: 5px;
+            border-bottom: 1px #ababab solid;
+            padding: 4px;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+    />
+</head>
+<body>
+<div id="wrapper">
+
+<div id="title">일별 박스 오피스</div>
+<div id="form">
+    <label for="year">
+        <input id="year" value="2025"/>
+        년
+    </label>
+    <label for="month">
+        <select id="month">
+            <option value="01">1월</option>
+            <option value="02">2월</option>
+            <option value="03">3월</option>
+            <option value="04">4월</option>
+            <option value="05">5월</option>
+            <option value="06">6월</option>
+            <option value="07">7월</option>
+            <option value="08">8월</option>
+            <option value="09">9월</option>
+            <option value="10">10월</option>
+            <option value="11">11월</option>
+            <option value="12">12월</option>
+        </select>
+    </label>
+    <label for="day">
+        <select id="day"></select>
+    </label>
+    <button id="button" onclick="callList()">
+        <span class="material-symbols-outlined"> search </span>
+    </button>
+</div>
+<div id="movie-rank-wrapper">
+    <ul id="movie-rank"></ul>
+</div>
+<div id="movie-info"></div>
+
+</div>
+<script>
+    const year = document.querySelector("#year");
+    const day = document.querySelector("#day");
+    const month = document.querySelector("#month");
+    // 월 드롭다운 선택시 월에 맞는 일수 변경
+    month.addEventListener("change", (e) => {
+        const monthValue = parseInt(e.target.value);
+        // 일 드롭다운 전체 삭제
+        day.textContent = "";
+
+        // 2월일 경우 윤년을 제외한 28일
+        if (monthValue === 2) {
+            if (!year.value) {
+                generateDays(28);
+            } else {
+                generateDays(checkYoonYear(year.value));
+            }
+        } else if (monthValue < 6) {
+            // 6월 이하는 짝수일때 30 홀수월일때 31
+            generateDays(monthValue % 2 === 0 ? 30 : 31);
+        } else {
+            // 7월 이상부터는 짝수일때 31 홀수월일때 3월
+            generateDays(monthValue % 2 === 1 ? 30 : 31);
+        }
+    });
+    day.addEventListener("change", () => {
+        callList();
+    });
+    // 기본값으로 31
+    generateDays(31);
+
+    // 2월 윤년에 따른 날짜 리턴
+    function checkYoonYear(year) {
+        if (year % 400 === 0) {
+            return 29;
+        }
+        if (year % 4 === 0 && year % 100 !== 0) {
+            return 29;
+        } else {
+            return 28;
+        }
+    }
+
+    // day 드롭다운에 일수만큼 추가
+    function generateDays(days) {
+        for (let i = 1; i <= days; i++) {
+            const option = document.createElement("option");
+            // 10 이하일땐 0 붙여서 세팅
+            if (i < 10) {
+                option.value = "0" + i;
+            } else {
+                option.value = i;
+            }
+            option.textContent = i + "일";
+            day.append(option);
+        }
+    }
+</script>
+<script>
+    const movieRank = document.querySelector("#movie-rank");
+    const movieInfo = document.querySelector("#movie-info");
+
+    const baseUrl = "http://www.kobis.or.kr/kobisopenapi";
+    const apiKey = "064e5757d49a7d21dde57b351f4c0cc2";
+
+    function callList() {
+        // 영화 목록 초기화
+        movieRank.textContent = "";
+        const date = year.value + month.value + day.value;
+        const xHttp = new XMLHttpRequest();
+        xHttp.open(
+            "get",
+            `${baseUrl}/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?targetDt=${date}&key=${apiKey}`
+        );
+        xHttp.send();
+        xHttp.onreadystatechange = () => {
+            if (xHttp.readyState === 4 && xHttp.status === 200) {
+                const result = JSON.parse(xHttp.responseText);
+                const movieList = result["boxOfficeResult"]["dailyBoxOfficeList"];
+                onClickMovieItem(movieList[0]);
+                movieList.forEach((element) => {
+                    // 아이템
+                    const div = document.createElement("li");
+                    div.className = "movie-item";
+
+                    // 상승 하향세 표시
+                    const updown = document.createElement("span");
+                    // 기본 레이아웃 클래스 추가
+                    updown.classList.add("movie-item-rank");
+                    let rankInten = element["rankInten"];
+                    // inten 값에 따라 스타일 다르게 적용
+                    setIntenStyle(updown, parseInt(rankInten));
+                    const rankIntenValue = document.createElement("span");
+                    // 음수일경우 절대값처리하여 표시
+                    rankIntenValue.textContent =
+                        "(" + Math.abs(parseInt(rankInten)) + ")";
+                    updown.appendChild(rankIntenValue);
+
+                    // 순위 표시
+                    const rank = document.createElement("span");
+                    rank.textContent = element["rank"] + "위";
+                    // 영화 이름 표시
+                    const movieName = document.createElement("span");
+                    movieName.textContent = element["movieNm"];
+
+                    // 아이템에 각 항목들 추가
+                    div.append(updown, rank, movieName);
+                    // 아이템 클릭 이벤트 추가
+                    div.addEventListener("click", () => {
+                        onClickMovieItem(element);
+                    });
+
+                    // 전체 리스트에 아이템 추가
+                    movieRank.append(div);
+                });
+            }
+        };
+    }
+
+    callList();
+
+    // 영화 아이템 클릭시 처리
+    function onClickMovieItem(movie) {
+        movieInfo.textContent = "";
+
+        const xHttp = new XMLHttpRequest();
+        xHttp.open(
+            "get",
+            `${baseUrl}/webservice/rest/movie/searchMovieInfo.json?key=${apiKey}&movieCd=${movie["movieCd"]}`
+        );
+        xHttp.send();
+        xHttp.onreadystatechange = () => {
+            if (xHttp.readyState === 4 && xHttp.status === 200) {
+                const result = JSON.parse(xHttp.responseText);
+                const resultData = result["movieInfoResult"]["movieInfo"];
+                console.log(resultData);
+                const movieTitle = document.createElement("div");
+                movieTitle.textContent = "영화제목 : " + resultData["movieNm"];
+                const enMovieTitle = document.createElement("div");
+                enMovieTitle.textContent = "영어제목 : " + resultData["movieNmEn"];
+                const showTime = document.createElement("div");
+                showTime.textContent = "상영시간 : " + resultData["showTm"] + "분";
+                const director = document.createElement("div");
+                director.textContent =
+                    "감독 : " + resultData["directors"][0]["peopleNm"];
+                const actors = document.createElement("div");
+                if (resultData['actors'].length === 0) {
+                    actors.textContent="출연배우 : 정보 없음";
+
+                } else {
+                    // 배우가 많을시 5명만 출력하고 나머지는 외 n 명으로 표시
+                    actors.textContent =
+                        "출연배우 : " +
+                        resultData["actors"]
+                            .slice(0, 5)
+                            .map((el) => " " + el["peopleNm"]) +
+                        (resultData["actors"].length > 5
+                            ? " 외 " + (parseInt(resultData["actors"].length) - 5) + "명"
+                            : "");
+
+                }
+                movieInfo.append(
+                    movieTitle,
+                    enMovieTitle,
+                    showTime,
+                    director,
+                    actors
+                );
+            }
+        };
+    }
+
+    function setIntenStyle(element, value) {
+        if (value === 0) {
+            element.classList.add("rank-item-none");
+        } else if (value < 0) {
+            element.classList.add("rank-item-minus");
+            const rank = document.createElement("span");
+            rank.textContent = value;
+            element.append(downElement());
+        } else {
+            element.classList.add("rank-item-plus");
+            element.append(upElement());
+        }
+        console.log(element);
+    }
+
+    function upElement() {
+        const span = document.createElement("span");
+        span.className = "material-symbols-outlined";
+        span.textContent = "arrow_drop_up";
+        return span;
+    }
+
+    function downElement() {
+        const span = document.createElement("span");
+        span.className = "material-symbols-outlined";
+        span.textContent = "arrow_drop_down";
+        return span;
+    }
+</script>
+</body>
+</html>

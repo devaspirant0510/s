@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+let xmlHttp = new XMLHttpRequest();
+xmlHttp.open("get","./data.json");
+xmlHttp.send();
+xmlHttp.onreadystatechange = () => {
+    if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+        console.log(xmlHttp.responseText);
+        const data = JSON.parse(xmlHttp.responseText)
+
+        data.forEach((obj) => {
+            console.log(obj);
+            let fw = `<div style='display:flex; align-items:center;'>
+                <img width='169' height='169' style='border-radius:50%' src=${obj.pic} alt=${obj.pic}>
+                <span>${obj.name}</span>
+                <span>${obj.hp}</span></div>`;
+            document.body.innerHTML += fw;
+        });
+    }
+}
+
+    </script>
+</body>
+</html>

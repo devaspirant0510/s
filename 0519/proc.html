@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>findproc</title>
+    <script>
+      console.log(location.href);
+      // const urlParam = new URLSearchParams(location.href)
+      const urlParam = new URLSearchParams(location.search);
+      console.log(urlParam);
+      let id = urlParam.get("id");
+      console.log(id);
+
+      let xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("get", "data1.json");
+      xmlhttp.send();
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+          console.log(xmlhttp.responseText);
+          try {
+            let data2 = JSON.parse(xmlhttp.responseText);
+            let finaldata = data2.filter(el=>el.id===id);
+            console.log(finaldata);
+            data2.forEach(element=>{
+                if(element.id===id){
+                    console.log(element);
+                    
+                }
+            })
+            
+          } catch (e) {
+            console.log(e);
+          }
+          /*
+            data2.forEach(elment => {
+                if (element.id === id) {
+                    console.log(elment);
+                    return;
+                }
+            });
+            */
+        }
+      };
+    </script>
+  </head>
+
+  <body>
+    <a href="findprocmove.html">aa</a>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 20%;
+            font-size: 0;
+            border: solid 1px black;
+           transition: transform 3s;
+
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+
+        }
+        .box input:nth-child(1){
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .box input:nth-child(2){
+            border-top: none;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .box:hover{
+            transform: rotateY(360deg);
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input/>
+
+        <input/>
+    </div>
+    <button>관리자용 전환</button>
+    <script>
+        let boxes = document.getElementsByClassName("box");
+        let trsBtn = document.querySelector("button")
+        console.log(trsBtn);
+        
+        trsBtn.addEventListener("click",()=>{
+
+            boxes[0].style.transform = "rotateY(360deg)"
+        })
+
+    </script>
+    
+</body>
+</html>
